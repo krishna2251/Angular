@@ -1,0 +1,97 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+ 
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav> -->
+  
+<div>
+    <app-home-navbar></app-home-navbar>
+<form [formGroup]="product" novalidate (ngSubmit)="onSubmit(product)">
+  
+  <mat-tab-group >
+    <div>
+  <mat-tab label="Product">
+     
+  <div class="form-group">
+    <label>Product Name</label>
+    <input type="text" formControlName="productName">
+    
+
+    <label>Product Desc</label>
+    <input type="text" formControlName="productDesc">
+    <label>Search Tag</label>
+    <input type="text" formControlName="searchTag">
+  </div>
+  <br>
+  <h4>Catalog</h4>
+  <app-catalog-selector></app-catalog-selector>  
+  </mat-tab>
+  </div>
+  <div>
+  <mat-tab label="Product Catalog">
+  <div formArrayName="productCatalogDir">
+<!--    
+    <div class="pcd-container" *ngFor="let productCatalogDir of getproductCatalogDirs(survey); let k = index">  -->
+         <div class="pcd-container" *ngFor="let productCatalogDir of product.controls.productCatalogDir.controls; let k = index"> 
+      <div [formGroupName]="k">
+        
+        <div>
+          <label>Catalog Id</label>
+          <input type="text" formControlName="catalogId">
+        </div>
+        <div>
+          <label>Primary Flag</label>
+          <input type="text" formControlName="primaryFlg">
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-tab>
+</div>
+<div>
+<mat-tab label="SKU">
+    <app-product-list></app-product-list> 
+  <div formArrayName="sku">
+    <!-- <div class="sku-container" *ngFor="let sku of getSkus(product); let i = index">  -->
+         <div class="sku-container" *ngFor="let sku of product.controls.sku.controls; let i = index"> 
+    
+      <div class="ui raised segments" [formGroupName]="i">
+        <h4 class="ui header">Sku Details</h4>
+        <input type="text" placeholder="Image Url" formControlName="imageUrl">
+        <input type="text" placeholder="Price" formControlName="price">
+        <input type="text" placeholder="Product SkuCd" formControlName="productSkuCd">
+        
+        <hr>
+        <div class="option-container" formArrayName="options">
+        
+           <div [formGroupName]="j" *ngFor="let option of getOptions(sku); let j = index">  
+               <!-- <div [formGroupName]="j" *ngFor="let option of survey.controls.sku.options.controls; let j=index">  -->
+             <!-- <input type="text" placeholder="Option Name" formControlName="optionName">
+            <input type="text" placeholder="Option Value" formControlName="optionValue">  -->
+            <app-dropdowns></app-dropdowns>  
+          </div>
+          
+        </div> 
+      </div>
+        <!-- <app-dropdowns></app-dropdowns>   -->
+    </div>
+    <button (click)="addProduct()" class="btn btn-success">Add Product</button>
+    
+  </div>
+   <!-- <app-product-list></app-product-list>   -->
+</mat-tab>
+</div>
+</mat-tab-group>
+</form>
+</div> 
+ <app-editsku></app-editsku> 
+<!-- <pre> {{product.value | json}} </pre> -->
+
+  <!-- <router-outlet></router-outlet>   -->

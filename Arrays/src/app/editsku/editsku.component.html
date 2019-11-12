@@ -1,0 +1,22 @@
+<div class="container">
+    <fieldset class="form-group">
+      <label>Image Url</label>
+      <input type="text" [(ngModel)]="sku.imageUrl" class="form-control" name="imageUrl" required="required">
+    </fieldset>
+  
+    <fieldset class="form-group">
+        <label>price</label>
+        <input type="text" [(ngModel)]="sku.price" class="form-control" name="price" required="required">
+      </fieldset>
+  
+      <fieldset class="form-group">
+          <label>ProductSku Cd</label>
+          <input type="text" [(ngModel)]="sku.ProductSkuCd" class="form-control" name="ProductSku Cd" required="required">
+        </fieldset>
+  
+        <!-- <fieldset class="form-group">
+            <label>Phone Number</label>
+            <input type="text" [(ngModel)]="employee.phoneNumber"  class="form-control" name="phoneNumber" required="required">
+          </fieldset> -->
+          <button (click)="addProduct()" class="btn btn-success">Add Sku</button>
+</div>

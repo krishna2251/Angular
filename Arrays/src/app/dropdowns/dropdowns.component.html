@@ -1,0 +1,31 @@
+<div class="container-fluid example-wrapper">
+  <div class="row">
+      <div class="col-xs-12 col-sm-4 example-col">
+          <p>Option Name:</p>
+          <kendo-dropdownlist
+               
+              [data]="dataOption"
+              [value]="selectedOptionName"
+              [defaultItem]="defaultItemOptionName"
+              [textField]="'optionName'"
+              [valueField]="'optionId'"
+              (valueChange)="handleCategoryChange($event)"
+          >
+          </kendo-dropdownlist>
+      </div>
+      <div class="col-xs-12 col-sm-4 example-col">
+          <p>Option Value:</p>
+          <kendo-dropdownlist
+              [disabled]="isDisabledProducts"
+              [defaultItem]="defaultItemOptionValue"
+              [data]="dataResultProducts"
+              [value]="selectedOptionValue"
+              [textField]="'optionValue'"
+              [valueField]="'valueId'"
+              (valueChange)="handleProductChange($event)"
+          >
+          </kendo-dropdownlist>
+      </div>
+  </div>
+</div>
+
